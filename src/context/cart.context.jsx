@@ -21,4 +21,4 @@ const CartProvider = ({ children }) => {
   return <CartContext.Provider value={{ hidden, toggleHidden, cartItems, addItem }}>{children}</CartContext.Provider>;
 };
 
-export { CartContext, CartProvider, };
+export { CartContext, CartProvider };
