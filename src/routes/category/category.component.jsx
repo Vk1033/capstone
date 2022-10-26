@@ -3,11 +3,13 @@ import { useState, useEffect, Fragment } from "react";
 import ProductCard from "../../components/product-card/product-card.component";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCategoriesMap } from "../../store/categories/category.selector";
+import { selectCategoriesMap, selectIsCategoriesLoading } from "../../store/categories/category.selector";
+import Spinner from "../../components/spinner/spinner.components";
 
 const Category = () => {
   const { category } = useParams();
   const categoriesMap = useSelector(selectCategoriesMap);
+  const isLoading = useSelector(selectIsCategoriesLoading);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
@@ -17,9 +19,13 @@ const Category = () => {
   return (
     <Fragment>
       <h2 className="category-title">{category.toLocaleUpperCase()}</h2>
-      <div className="category">
-        {products && products.map((product) => <ProductCard key={product.id} product={product}></ProductCard>)}
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className="category">
+          {products && products.map((product) => <ProductCard key={product.id} product={product}></ProductCard>)}
+        </div>
+      )}
     </Fragment>
   );
 };
