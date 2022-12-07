@@ -13,7 +13,7 @@ export async function handler(event) {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
-      currency: "usd",
+      currency: "inr",
       payment_method_types: ["card"],
     });
 
