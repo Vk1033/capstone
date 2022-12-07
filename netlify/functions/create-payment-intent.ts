@@ -3,7 +3,9 @@ import stripePackage from "stripe";
 
 dotenv.config();
 
-const stripe = stripePackage(process.env.STRIPE_SECRET_KEY);
+const stripe = new stripePackage(process.env.STRIPE_SECRET_KEY as string, {
+  apiVersion: "2022-11-15",
+});
 
 export async function handler(event) {
   const { amount } = JSON.parse(event.body);
