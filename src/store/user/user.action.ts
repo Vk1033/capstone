@@ -5,5 +5,5 @@ import { createAction, withMatcher, ActionWithPayload } from "../../utils/reduce
 type SetCurrentUser = ActionWithPayload<USER_ACTION_TYPES.SET_CURRENT_USER, any>;
 
 export const setCurrentUser = withMatcher(
-  (user: User): SetCurrentUser => createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user)
+  (user: User | null): SetCurrentUser => createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user)
 );

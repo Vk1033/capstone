@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { onAuthStateChangedListener, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils";
 import { setCurrentUser } from "./store/user/user.action";
 import { useDispatch } from "react-redux";
+import { User } from "firebase/auth";
 
 function App() {
   const dispatch = useDispatch();
