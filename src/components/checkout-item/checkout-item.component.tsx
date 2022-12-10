@@ -1,5 +1,5 @@
 import "./checkout-item.styles.scss";
-import React from "react";
+import React, { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem, clearItems } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
@@ -9,7 +9,7 @@ type CheckoutItemProps = {
   cartItem: CartItem;
 };
 
-const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
+const CheckoutItem = memo(({ cartItem }: CheckoutItemProps) => {
   const { name, imageUrl, price, quantity } = cartItem;
   const dispatch = useDispatch();
   const CartItems = useSelector(selectCartItems);
@@ -37,6 +37,6 @@ const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
       </div>
     </div>
   );
-};
+});
 
 export default CheckoutItem;
